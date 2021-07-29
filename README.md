@@ -72,15 +72,15 @@ module load python_gpu/3.7.1
 bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_nn.py
 ```
 
-### 4.2 BertForSequenceClassification
+### 4.2 BERT-Seq
 - Requirements: torch, transformers, sklearn, tqdm
 - Module load on Leonhard
 ```
 module load python_gpu/3.7.4
 ```
-- Fine-tune BERT classifier
+- Fine-tune BERT-Seq
 ```
-bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_classifier.py
+bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_seq.py
 ```
 
 ## Acknowledgement
