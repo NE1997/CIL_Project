@@ -78,9 +78,9 @@ bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_nn.py
 ```
 module load python_gpu/3.7.4
 ```
-- Fine-tune BertForSequenceClassification
+- Fine-tune Bert classifier
 ```
-bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BertForSequenceClassification/BertForSequenceClassification.py
+bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_classifier.py
 ```
 
 ## Acknowledgement
