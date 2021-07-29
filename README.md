@@ -2,14 +2,14 @@
 Project for Computational Intelligence Lab 2021 Spring @ ETH Zurich [[Report Link]()] <br/>
 
 ## Authors
-Ying Jiao, , , 
+Ying Jiao, Yuyan Zhao, , 
 
 ## Project Description
 
 
 
 ## 1. Data shuffle and split
-- Requriements: csv, random
+- Requirements: csv, random
 - Put train_pos_full.txt and train_neg_full.txt under ```./twitter-datasets```
 - Run
 ```
