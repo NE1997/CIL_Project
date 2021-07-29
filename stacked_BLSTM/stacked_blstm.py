@@ -25,12 +25,12 @@ pos_label = []
 data = []
 label = []
 
-with open("twitter-datasets/train_neg_full.txt",'r') as file:
+with open("../twitter-datasets/train_neg_full.txt",'r') as file:
     neg = file.read().splitlines()
     neg_label = [0 for i in range(len(neg))]
     file.close()
             
-with open("twitter-datasets/train_pos_full.txt",'r') as file:
+with open("../twitter-datasets/train_pos_full.txt",'r') as file:
     pos = file.read().splitlines()
     pos_label = [1 for i in range(len(pos))]
     file.close()
