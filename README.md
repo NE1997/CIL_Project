@@ -20,10 +20,19 @@ python dataset.py
 
 ## 3. LSTM Models
 
-### 3.1 yuyan's LSTM
+### 3.1 stacked BLSTM
+- Requirements: Python 3.7.4, TensorFlow 2.2.0, matplotlib, pandas, numpy, sklearn
+- Option 1: run python file
+```
+python3 stacked_blstm.py
+```
+- Option 2: run on jupyter notebook
+```
+jupyter notebook stacked_blstm.ipynb
+```
 
 ### 3.2 LSTM-AT & LSTM-SAT
-- Requriements: Python 3.7.4, TensorFlow 2.0.0, pickle, gensim, numpy, pandas, re, time, nltk
+- Requirements: Python 3.7.4, TensorFlow 2.0.0, pickle, gensim, numpy, pandas, re, time, nltk
 - Module load on Leonhard
 ```
 module load gcc/6.3.0 python_gpu/3.7.4
@@ -53,7 +62,7 @@ python LSTM-SAT/pred_to_sub.py
 ## 4. BERT Models
 
 ### 4.1 BERT-NN
-- Requriements: torch, transformers, sklearn, tqdm
+- Requirements: torch, transformers, sklearn, tqdm
 - Module load on Leonhard
 ```
 module load python_gpu/3.7.1
@@ -63,7 +72,16 @@ module load python_gpu/3.7.1
 bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_nn.py
 ```
 
-### 4.2
+### 4.2 BertForSequenceClassification
+- Requirements: torch, transformers, sklearn, tqdm
+- Module load on Leonhard
+```
+module load python_gpu/3.7.1
+```
+- Fine-tune BertForSequenceClassification
+```
+bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BertForSequenceClassification/BertForSequenceClassification.py
+```
 
 ## Acknowledgement
 We would like to thank the following Github repos and tutorials: <br/>
@@ -71,5 +89,4 @@ We would like to thank the following Github repos and tutorials: <br/>
 - [Huggingface](https://huggingface.co/)
 - [bert fine-tuning 1](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
 - [bert fine-tuning 2](https://skimai.com/fine-tuning-bert-for-sentiment-analysis/)
-
-
+- [Text classification with an RNN] (https://www.tensorflow.org/text/tutorials/text_classification_rnn)
