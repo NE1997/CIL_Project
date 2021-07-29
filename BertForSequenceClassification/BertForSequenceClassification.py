@@ -1,4 +1,3 @@
-import os
 import re
 #from tqdm import tqdm
 import numpy as np
@@ -12,22 +11,12 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 import torch.nn as nn
 from transformers import BertModel
 from transformers import AdamW, get_linear_schedule_with_warmup
-import multiprocessing as mp
-
-import requests as r
+#import multiprocessing as mp
 
 import random
 import time
 
 import torch.nn.functional as F
-
-#from contextlib import contextmanager;
-#@contextmanager
-#def timethis(s=None):
-#    start = time.time(); s = f'{s}\t' or ''
-#    try: yield
-#    finally: print(f'{s}{time.time() - start} s')
-
 
 
 def text_preprocessing(text):
@@ -134,8 +123,7 @@ class BertClassifier(nn.Module):
         #    output_attentions = False, # Whether the model returns attentions weights.
         #    output_hidden_states = True, # Whether the model returns all hidden-states.
         #)
-        #self.bert = BertForSequenceClassification.from_pretrained('./bert_pretrained_model')
-        self.bert = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2, output_attentions=True, output_hidden_states = True)
+        self.bert = BertForSequenceClassification.from_pretrained('./bert_pretrained_model')
 
         # Instantiate an one-layer feed-forward classifier
         self.classifier = nn.Sequential(
@@ -198,7 +186,7 @@ def initialize_model(epochs=4):
                 )
 
     # Total number of training steps
-    total_steps = len(train_dataloader) * epochs
+    total_steps = len(full_train_dataloader) * epochs
 
     # Set up the learning rate scheduler
     scheduler = get_linear_schedule_with_warmup(optimizer,
@@ -378,12 +366,12 @@ MAX_LEN = 128
 train_data = []
 with open("train_pos_full.txt", "r") as pos_f:
     pos_lines = pos_f.readlines()
-#pos_lines = pos_lines[:50]
+#pos_lines = pos_lines[:len(pos_lines)//2]
 for line in pos_lines:
     train_data.append(line.strip("\n"))
 with open("train_neg_full.txt", "r") as neg_f:
     neg_lines = neg_f.readlines()
-#neg_lines = neg_lines[:50]
+#neg_lines = neg_lines[:len(neg_lines)//2]
 for line in neg_lines:
     train_data.append(line.strip("\n"))
 
@@ -423,7 +411,7 @@ data = pd.concat([data, temp_df])
 X = data.tweet.values
 y = data.label.values
 
-X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.1, random_state=2020)
+#X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.1, random_state=2020)
 
 
 test_data = pd.read_csv("test_data.csv")
@@ -440,8 +428,9 @@ else:
 
 
 # Load the BERT 
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
-#tokenizer = BertTokenizer.from_pretrained('bert_pretrained')
+#r.get('https://huggingface.co/bert-base-uncased/resolve/main/config.json', verify=False)
+#tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+tokenizer = BertTokenizer.from_pretrained('bert_pretrained')
 
 
 # Run function `preprocessing_for_bert` on the train set and the validation set
@@ -452,28 +441,28 @@ print('######## Tokenizing data... ########')
 
 #pool = mp.Pool(mp.cpu_count())
 #train_inputs, train_masks = pool.map(preprocessing_for_bert, X_train)
-train_inputs, train_masks = preprocessing_for_bert(X_train)
+#train_inputs, train_masks = preprocessing_for_bert(X_train)
 
 #pool = mp.Pool(mp.cpu_count())
 #val_inputs, val_masks = pool.map(preprocessing_for_bert, X_val)
-val_inputs, val_masks = preprocessing_for_bert(X_val)
+#val_inputs, val_masks = preprocessing_for_bert(X_val)
 
 # Convert other data types to torch.Tensor
-train_labels = torch.tensor(y_train)
-val_labels = torch.tensor(y_val)
+#train_labels = torch.tensor(y_train)
+#val_labels = torch.tensor(y_val)
 
 # For fine-tuning BERT, the authors recommend a batch size of 16 or 32.
-batch_size = 64
+batch_size = 32
 
 # Create the DataLoader for our training set
-train_data = TensorDataset(train_inputs, train_masks, train_labels)
-train_sampler = RandomSampler(train_data)
-train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
+#train_data = TensorDataset(train_inputs, train_masks, train_labels)
+#train_sampler = RandomSampler(train_data)
+#train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
 
 # Create the DataLoader for our validation set
-val_data = TensorDataset(val_inputs, val_masks, val_labels)
-val_sampler = SequentialSampler(val_data)
-val_dataloader = DataLoader(val_data, sampler=val_sampler, batch_size=batch_size)
+#val_data = TensorDataset(val_inputs, val_masks, val_labels)
+#val_sampler = SequentialSampler(val_data)
+#val_dataloader = DataLoader(val_data, sampler=val_sampler, batch_size=batch_size)
 
 
 # Specify loss function
@@ -482,27 +471,32 @@ loss_fn = nn.CrossEntropyLoss()
 set_seed(42)    # Set seed for reproducibility
 
 
-bert_classifier, optimizer, scheduler = initialize_model(epochs=3)
-print('######## Training train... ########')
+#bert_classifier, optimizer, scheduler = initialize_model(epochs=2)
+#print('######## Training train... ########')
 
 #pool = mp.Pool(mp.cpu_count())
 #pool.map(train, bert_classifier, train_dataloader, 5)
-train(bert_classifier, train_dataloader, epochs=3)
+#train(bert_classifier, train_dataloader, epochs=2)
 
 
 # Concatenate the train set and the validation set
-full_train_data = torch.utils.data.ConcatDataset([train_data, val_data])
+#full_train_data = torch.utils.data.ConcatDataset([train_data, val_data])
+#full_train_sampler = RandomSampler(full_train_data)
+#full_train_dataloader = DataLoader(full_train_data, sampler=full_train_sampler, batch_size=32)
+
+full_train_inputs, full_train_masks = preprocessing_for_bert(X)
+full_train_data = TensorDataset(full_train_inputs, full_train_masks, torch.tensor(y))
 full_train_sampler = RandomSampler(full_train_data)
 full_train_dataloader = DataLoader(full_train_data, sampler=full_train_sampler, batch_size=32)
 
 # Train the Bert Classifier on the entire training data
 set_seed(42)
-bert_classifier, optimizer, scheduler = initialize_model(epochs=3)
+bert_classifier, optimizer, scheduler = initialize_model(epochs=2)
 print('######## Training full... ########')
 
 #pool = mp.Pool(mp.cpu_count())
 #pool.map(train, bert_classifier, full_train_dataloader, 5)
-train(bert_classifier, full_train_dataloader, epochs=3)
+train(bert_classifier, full_train_dataloader, epochs=2)
 
 # Run `preprocessing_for_bert` on the test set
 print('######## Tokenizing data... ########')

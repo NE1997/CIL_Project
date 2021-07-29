@@ -2,18 +2,12 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import io
-import pathlib
-import itertools
 
 from sklearn.model_selection import train_test_split
-from nltk.tokenize.api import StringTokenizer
 
 import tensorflow as tf
 import tensorflow_hub as hub
 import tensorflow_text as text
-from official.nlp import optimization
-from plot_keras_history import plot_history
 
 from tensorflow.math import confusion_matrix
 
@@ -31,12 +25,12 @@ pos_label = []
 data = []
 label = []
 
-with open("./train_neg_full.txt",'r') as file:
+with open("twitter-datasets/train_neg_full.txt",'r') as file:
     neg = file.read().splitlines()
     neg_label = [0 for i in range(len(neg))]
     file.close()
             
-with open("./train_pos_full.txt",'r') as file:
+with open("twitter-datasets/train_pos_full.txt",'r') as file:
     pos = file.read().splitlines()
     pos_label = [1 for i in range(len(pos))]
     file.close()
