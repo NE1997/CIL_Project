@@ -1,13 +1,14 @@
 # Tweet Sentiment Classification
 Project for Computational Intelligence Lab 2021 Spring @ ETH Zurich [[Report Link]()] <br/>
 
-## Baseline ML Models
+## 1. Baseline ML Models
 
-## LSTM Models
+## 2. LSTM Models
 
-### yuyan's LSTM
+- yuyan's LSTM
 
-### LSTM-AT
+- LSTM-AT & LSTM-SAT
+Required
 
 
 
