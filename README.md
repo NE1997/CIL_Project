@@ -89,4 +89,4 @@ We would like to thank the following Github repos and tutorials: <br/>
 - [Huggingface](https://huggingface.co/)
 - [bert fine-tuning 1](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
 - [bert fine-tuning 2](https://skimai.com/fine-tuning-bert-for-sentiment-analysis/)
-- [Text classification with an RNN] (https://www.tensorflow.org/text/tutorials/text_classification_rnn)
+- [Text classification with an RNN](https://www.tensorflow.org/text/tutorials/text_classification_rnn)
