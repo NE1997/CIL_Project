@@ -24,7 +24,7 @@ python dataset.py
 - Requirements: Python 3.7.4, TensorFlow 2.2.0, matplotlib, pandas, numpy, sklearn
 - Option 1: run python file
 ```
-python3 stacked_blstm.py
+python stacked_blstm.py
 ```
 - Option 2: run on jupyter notebook
 ```
