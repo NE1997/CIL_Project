@@ -116,14 +116,14 @@ class BertClassifier(nn.Module):
         D_in, H, D_out = 768, 50, 2
 
         # Instantiate BERT model
-        #model = BertForSequenceClassification.from_pretrained(
-        #    "bert-base-uncased", # Use the 12-layer BERT model, with an uncased vocab.
-        #    num_labels = 2, # The number of output labels--2 for binary classification.
-        #                    # You can increase this for multi-class tasks.   
-        #    output_attentions = False, # Whether the model returns attentions weights.
-        #    output_hidden_states = True, # Whether the model returns all hidden-states.
-        #)
-        self.bert = BertForSequenceClassification.from_pretrained('./bert_pretrained_model')
+        self.bert = BertForSequenceClassification.from_pretrained(
+            "bert-base-uncased", # Use the 12-layer BERT model, with an uncased vocab.
+            num_labels = 2, # The number of output labels--2 for binary classification.
+                            # You can increase this for multi-class tasks.   
+            output_attentions = False, # Whether the model returns attentions weights.
+            output_hidden_states = False, # Whether the model returns all hidden-states.
+        )
+        #self.bert = BertForSequenceClassification.from_pretrained('./bert_pretrained_model')
 
         # Instantiate an one-layer feed-forward classifier
         self.classifier = nn.Sequential(
@@ -364,12 +364,12 @@ MAX_LEN = 128
 
 
 train_data = []
-with open("train_pos_full.txt", "r") as pos_f:
+with open("twitter-datasets/train_pos_full.txt", "r") as pos_f:
     pos_lines = pos_f.readlines()
 #pos_lines = pos_lines[:len(pos_lines)//2]
 for line in pos_lines:
     train_data.append(line.strip("\n"))
-with open("train_neg_full.txt", "r") as neg_f:
+with open("twitter-datasets/train_neg_full.txt", "r") as neg_f:
     neg_lines = neg_f.readlines()
 #neg_lines = neg_lines[:len(neg_lines)//2]
 for line in neg_lines:
@@ -387,7 +387,7 @@ with open("train_full_all.csv", "w", encoding='UTF8') as f:
       writer.writerow(data)
 f.close()
 test_data = []
-with open("test_data.txt", "r") as test_f:
+with open("twitter-datasets/test_data.txt", "r") as test_f:
     test_lines = test_f.readlines()
 for line in test_lines:
     test_data.append(line.strip("\n"))
@@ -429,8 +429,8 @@ else:
 
 # Load the BERT 
 #r.get('https://huggingface.co/bert-base-uncased/resolve/main/config.json', verify=False)
-#tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
-tokenizer = BertTokenizer.from_pretrained('bert_pretrained')
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+#tokenizer = BertTokenizer.from_pretrained('bert_pretrained')
 
 
 # Run function `preprocessing_for_bert` on the train set and the validation set
