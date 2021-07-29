@@ -54,7 +54,7 @@ python LSTM-SAT/pred_to_sub.py
 
 ### 4.1 BERT-NN
 - Requriements: torch, transformers, sklearn, tqdm
-- - Module load on Leonhard
+- Module load on Leonhard
 ```
 module load python_gpu/3.7.1
 ```
