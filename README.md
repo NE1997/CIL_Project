@@ -28,7 +28,7 @@ python dataset.py
 ```
 module load gcc/6.3.0 python_gpu/3.7.4
 ```
-- Download tweet opinion words from [Link (https://www.kaggle.com/nltkdata/opinion-lexicon)], put positive-words.txt and negative-words.txt under ```./opinion_lexicon```
+- Download tweet opinion words from [Link](https://www.kaggle.com/nltkdata/opinion-lexicon), put positive-words.txt and negative-words.txt under ```./opinion_lexicon```
 - Generate sentiment lexicon
 ```
 python LSTM-SAT/sentiment_score.py
@@ -67,9 +67,9 @@ bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_nn.py
 
 ## Acknowledgement
 We would like to thank the following Github repos and tutorials: <br/>
--[gensim](https://github.com/RaRe-Technologies/gensim)
--[Huggingface](https://huggingface.co/)
--[bert fine-tuning 1](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
--[bert fine-tuning 2](https://skimai.com/fine-tuning-bert-for-sentiment-analysis/)
+- [gensim](https://github.com/RaRe-Technologies/gensim)
+- [Huggingface](https://huggingface.co/)
+- [bert fine-tuning 1](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
+- [bert fine-tuning 2](https://skimai.com/fine-tuning-bert-for-sentiment-analysis/)
 
 
