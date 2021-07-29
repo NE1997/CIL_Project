@@ -2,14 +2,14 @@
 Project for Computational Intelligence Lab 2021 Spring @ ETH Zurich [[Report Link]()] <br/>
 
 ## Authors
-Ying Jiao, , , 
+Ying Jiao, Yuyan Zhao, , 
 
 ## Project Description
 
 
 
 ## 1. Data shuffle and split
-- Requriements: csv, random
+- Requirements: csv, random
 - Put train_pos_full.txt and train_neg_full.txt under ```./twitter-datasets```
 - Run
 ```
@@ -76,7 +76,7 @@ bsub -n 4 -W 24:00 -R "rusage[mem=81920, ngpus_excl_p=1]" python BERT/bert_nn.py
 - Requirements: torch, transformers, sklearn, tqdm
 - Module load on Leonhard
 ```
-module load python_gpu/3.7.1
+module load python_gpu/3.7.4
 ```
 - Fine-tune BertForSequenceClassification
 ```
@@ -89,4 +89,4 @@ We would like to thank the following Github repos and tutorials: <br/>
 - [Huggingface](https://huggingface.co/)
 - [bert fine-tuning 1](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
 - [bert fine-tuning 2](https://skimai.com/fine-tuning-bert-for-sentiment-analysis/)
-- [Text classification with an RNN] (https://www.tensorflow.org/text/tutorials/text_classification_rnn)
+- [Text classification with an RNN](https://www.tensorflow.org/text/tutorials/text_classification_rnn)
