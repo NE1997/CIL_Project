@@ -363,48 +363,48 @@ def bert_predict(model, test_dataloader):
 MAX_LEN = 128
 
 
-train_data = []
-with open("../twitter-datasets/train_pos_full.txt", "r") as pos_f:
-    pos_lines = pos_f.readlines()
-#pos_lines = pos_lines[:len(pos_lines)//2]
-for line in pos_lines:
-    train_data.append(line.strip("\n"))
-with open("../twitter-datasets/train_neg_full.txt", "r") as neg_f:
-    neg_lines = neg_f.readlines()
-#neg_lines = neg_lines[:len(neg_lines)//2]
-for line in neg_lines:
-    train_data.append(line.strip("\n"))
+# train_data = []
+# with open("train_pos_full.txt", "r") as pos_f:
+#     pos_lines = pos_f.readlines()
+# #pos_lines = pos_lines[:40]
+# for line in pos_lines:
+#     train_data.append(line.strip("\n"))
+# with open("train_neg_full.txt", "r") as neg_f:
+#     neg_lines = neg_f.readlines()
+# #neg_lines = neg_lines[:40]
+# for line in neg_lines:
+#     train_data.append(line.strip("\n"))
 
-labels = ["1"] * len(pos_lines) + ["0"] * len(neg_lines)
-header = ['id','tweet', 'label']
-with open("train_full_all.csv", "w", encoding='UTF8') as f:
-    writer = csv.writer(f)
-    # write the header
-    writer.writerow(header)
-    # write the data
-    for i in range(len(train_data)):
-      data = [i, train_data[i], labels[i]]
-      writer.writerow(data)
-f.close()
-test_data = []
-with open("../twitter-datasets/test_data.txt", "r") as test_f:
-    test_lines = test_f.readlines()
-for line in test_lines:
-    test_data.append(line.strip("\n"))
-test_header = ['id','tweet']
-with open("test_data.csv", "w", encoding='UTF8') as f:
-    writer = csv.writer(f)
-    # write the header
-    writer.writerow(test_header)
-    # write the data
-    for i in range(len(test_data)):
-      data = [i, test_data[i]]
-      writer.writerow(data)
-f.close()
+# labels = ["1"] * len(pos_lines) + ["0"] * len(neg_lines)
+# header = ['id','tweet', 'label']
+# with open("train_full_all.csv", "w", encoding='UTF8') as f:
+#     writer = csv.writer(f)
+#     # write the header
+#     writer.writerow(header)
+#     # write the data
+#     for i in range(len(train_data)):
+#       data = [i, train_data[i], labels[i]]
+#       writer.writerow(data)
+# f.close()
+# test_data = []
+# with open("test_data.txt", "r") as test_f:
+#     test_lines = test_f.readlines()
+# for line in test_lines:
+#     test_data.append(line.strip("\n"))
+# test_header = ['id','tweet']
+# with open("test_data.csv", "w", encoding='UTF8') as f:
+#     writer = csv.writer(f)
+#     # write the header
+#     writer.writerow(test_header)
+#     # write the data
+#     for i in range(len(test_data)):
+#       data = [i, test_data[i]]
+#       writer.writerow(data)
+# f.close()
 
 
 data = pd.DataFrame()        
-temp_df = pd.read_csv("train_full_all.csv", encoding='utf-8', memory_map=True).reset_index(drop=True)
+temp_df = pd.read_csv("../twitter-datasets/train_full_all_shuffled.csv", encoding='utf-8', memory_map=True).reset_index(drop=True)
 data = pd.concat([data, temp_df])
 
 
