@@ -404,7 +404,7 @@ MAX_LEN = 128
 
 
 data = pd.DataFrame()        
-temp_df = pd.read_csv("../twitter-datasets/train_full_all_shuffled.csv", encoding='utf-8', memory_map=True).reset_index(drop=True)
+temp_df = pd.read_csv("twitter-datasets/train_full_all_shuffled.csv", encoding='utf-8', memory_map=True).reset_index(drop=True)
 data = pd.concat([data, temp_df])
 
 
