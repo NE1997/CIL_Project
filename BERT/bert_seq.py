@@ -386,21 +386,21 @@ MAX_LEN = 128
 #       data = [i, train_data[i], labels[i]]
 #       writer.writerow(data)
 # f.close()
-# test_data = []
-# with open("test_data.txt", "r") as test_f:
-#     test_lines = test_f.readlines()
-# for line in test_lines:
-#     test_data.append(line.strip("\n"))
-# test_header = ['id','tweet']
-# with open("test_data.csv", "w", encoding='UTF8') as f:
-#     writer = csv.writer(f)
-#     # write the header
-#     writer.writerow(test_header)
-#     # write the data
-#     for i in range(len(test_data)):
-#       data = [i, test_data[i]]
-#       writer.writerow(data)
-# f.close()
+test_data = []
+with open("test_data.txt", "r") as test_f:
+    test_lines = test_f.readlines()
+for line in test_lines:
+    test_data.append(line.strip("\n"))
+test_header = ['id','tweet']
+with open("test_data.csv", "w", encoding='UTF8') as f:
+    writer = csv.writer(f)
+    # write the header
+    writer.writerow(test_header)
+    # write the data
+    for i in range(len(test_data)):
+      data = [i, test_data[i]]
+      writer.writerow(data)
+f.close()
 
 
 data = pd.DataFrame()        
