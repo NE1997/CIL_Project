@@ -5,7 +5,7 @@ from gensim.models import KeyedVectors
 
 # Transforming tweets to vectors
 def vectorizer(word2vec_model, tweets_data):
-    print("Transforming tweets to vectors...")
+    #print("Transforming tweets to vectors...")
 
     colon = word2vec_model.get_vector(':')
     dimension = colon.shape[0]
@@ -13,7 +13,7 @@ def vectorizer(word2vec_model, tweets_data):
     X = np.zeros((len(tweets_data), dimension))
     cnt = 0
     for tweet in tweets_data:
-        print("Round {0}".format(cnt+1))
+        #print("Round {0}".format(cnt+1))
         words = tweet.split()
         vectors = []
         for word in words:
@@ -39,11 +39,11 @@ glove_dimension = 200
 glove_filename = "glove.twitter.27B.{0}d".format(glove_dimension)
 glove_path = "twitter-datasets/glove/{0}.txt".format(glove_filename)
 word2vec_path = "twitter-datasets/glove/{0}.word2vec".format(glove_filename)
-#glove2word2vec(glove_path, word2vec_path)
-print("Converting GloVe to word2vec: done.")
+glove2word2vec(glove_path, word2vec_path)   # Comment this line if you already have the .word2vec file for corresponding dimension
+#print("Converting GloVe to word2vec: done.")
 
 word2vec_model = KeyedVectors.load_word2vec_format(word2vec_path, binary=False)
-print("Loading word2vec model: done.")
+#print("Loading word2vec model: done.")
 
 # Loading data
 tweets = []
@@ -55,6 +55,7 @@ def load_tweets(filename, label):
             tweets.append(line.rstrip())
             labels.append(label)
 
+# Choose the data size
 data_size = "partial"
 if data_size == "partial":
     load_tweets("twitter-datasets/train_neg.txt", -1)
@@ -66,7 +67,7 @@ elif data_size == "full":
 # Converting to NumPy array to facilitate indexing
 tweets = np.array(tweets)
 labels = np.array(labels)
-print("Loading training data: done ({0} tweets loaded).".format(len(tweets)))
+#print("Loading training data: done ({0} tweets loaded).".format(len(tweets)))
 
 # Spliting data into training set and validation set
 np.random.seed(243) # Reproducibility
@@ -92,14 +93,13 @@ Y_val = labels[val_indices]
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import cross_val_score
 
-# create the model, train it, print scores
-n_estimator = 20
+n_estimator = 100
 clf = RandomForestClassifier(n_estimators=n_estimator)
 start = time.time()
 
 #X_train = np.loadtxt("twitter-datasets/X_train_glove_{0}d_full_90.csv".format(glove_dimension), delimiter=",")
 #Y_train = np.loadtxt("twitter-datasets/Y_train_glove_{0}d_full_90.csv".format(glove_dimension), delimiter=",")
-print("Training random forest classifier...")
+#print("Training random forest classifier...")
 clf.fit(X_train, Y_train)
 
 #X_val = np.loadtxt("twitter-datasets/X_val_glove_{0}d_full_10.csv".format(glove_dimension), delimiter=",")
@@ -107,7 +107,7 @@ clf.fit(X_train, Y_train)
 print("train score:", cross_val_score(clf, X_train, Y_train, cv=5))
 print("test score:", cross_val_score(clf, X_val, Y_val, cv=5))
 end = time.time()
-print("Training runs in: {0}s.".format(end-start))
+#print("Training runs in: {0}s.".format(end-start))
 
 test = []
 def load_test(filename):
@@ -120,7 +120,7 @@ def load_test(filename):
 
 load_test('twitter-datasets/test_data.txt')
 test = np.array(test)
-print("Loading test data: done ({0} tweets loaded).".format(len(test)))
+#print("Loading test data: done ({0} tweets loaded).".format(len(test)))
 X_test = vectorizer(word2vec_model, test)
 #np.savetxt("twitter-datasets/X_test_glove_{0}d.csv".format(glove_dimension), X_test, delimiter=",")
 Y_test = clf.predict(X_test)
@@ -131,4 +131,4 @@ with open(output_path, 'w') as file:
     file.write("Id,Prediction\n")
     for i in range(len(Y_test)):
         file.write("{0},{1}\n".format(i+1, Y_test[i]))
-print("Dumping prediction to {0} file: done.".format(output_filename))
+#print("Dumping prediction to {0} file: done.".format(output_filename))
