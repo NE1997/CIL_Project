@@ -3,6 +3,15 @@ import numpy as np
 from gensim.scripts.glove2word2vec import glove2word2vec
 from gensim.models import KeyedVectors
 
+"""
+Function "vectorizer()" adapted from:
+*    Title: Getting started with NLP: Word Embeddings, GloVe and Text classification
+*    Author: Eduardo Muñoz Sala
+*    Section: Applying the word embedding to a text classification task
+*    Date: Aug 15, 2020
+*    Availability: https://edumunozsala.github.io/BlogEms/jupyter/nlp/classification/embeddings/python/2020/08/15/Intro_NLP_WordEmbeddings_Classification.html
+*
+"""
 # Transforming tweets to vectors
 def vectorizer(word2vec_model, tweets_data):
     #print("Transforming tweets to vectors...")
