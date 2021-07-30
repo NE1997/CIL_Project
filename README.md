@@ -2,21 +2,27 @@
 Project for Computational Intelligence Lab 2021 Spring @ ETH Zurich [[Report Link]()] <br/>
 
 ## Authors
-Ying Jiao, Yuyan Zhao, , 
-
+Ying Jiao, Yuyan Zhao, Shuting Li, Nils Ebeling
 ## Project Description
 
 
 
 ## 1. Data shuffle and split
 - Requirements: csv, random
-- Put train_pos_full.txt and train_neg_full.txt under ```./twitter-datasets```
+- Put train_pos.txt, train_neg.txt, train_pos_full.txt and train_neg_full.txt under ```./twitter-datasets```
 - Run
 ```
 python dataset.py
 ```
 
 ## 2. Baseline ML Models
+- Requirements: 
+- File structure:
+- xxx
+- Run python file
+```
+python stacked_blstm.py
+```
 
 ## 3. LSTM Models
 
