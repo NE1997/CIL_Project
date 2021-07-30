@@ -29,7 +29,7 @@ flags.DEFINE_boolean('load_senti', True, 'load sentiment score')
 flags.DEFINE_integer('emdedding_dim', 200, 'embedding dim')
 flags.DEFINE_integer('hidden_neural_size', 200, 'LSTM hidden neural size')
 flags.DEFINE_integer('hidden_layer_num', 200, 'LSTM hidden layer num')
-flags.DEFINE_string('input_path', './data_senti_batched.pkl', 'dataset path')
+flags.DEFINE_string('input_path', './data_senti_batched_all.pkl', 'dataset path')
 flags.DEFINE_integer(
     'max_len', 128, 'max_len of training sentence')    # @@@@ limit
 flags.DEFINE_float('init_scale', 0.1, 'init scale')

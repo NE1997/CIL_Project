@@ -29,7 +29,7 @@ flags.DEFINE_boolean('load_senti', False, 'load sentiment score')
 flags.DEFINE_integer('emdedding_dim', 200, 'embedding dim')
 flags.DEFINE_integer('hidden_neural_size', 200, 'LSTM hidden neural size')
 flags.DEFINE_integer('hidden_layer_num', 200, 'LSTM hidden layer num')
-flags.DEFINE_string('input_path', './data_senti_batched.pkl', 'dataset path')
+flags.DEFINE_string('input_path', './data_senti_batched_all.pkl', 'dataset path')
 flags.DEFINE_integer(
     'max_len', 128, 'max_len of training sentence')    # @@@@ limit
 flags.DEFINE_float('init_scale', 0.1, 'init scale')
@@ -117,7 +117,7 @@ def evaluate(model, session, x_test_batch, senti_test, y_test_batch, global_step
 def run_epoch(model, session, x_train_batch, senti_train, y_train_batch, global_steps, train_op, train_summary_writer):
     begin = int(time.time())
     all_index = list(range(0, len(x_train_batch)))
-    # print(len(all_index))
+    #print(len(all_index))
     random_index = random.sample(all_index, FLAGS.random_batch_no)
     total_acc = 0
     total_rmse = 0.0

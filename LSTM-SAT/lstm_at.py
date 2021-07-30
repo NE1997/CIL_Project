@@ -110,7 +110,7 @@ class Model_lstm_att(Model_base):
             self.embedded_words, [-1, self.wordinsent_cnt, self.embedding_size])
 
         # Layer 2: LSTM cell
-
+        lstm_use_peepholes = True
         with tf.variable_scope('lstm_cell1'):
             print("Using simple 1-layer LSTM with hidden layer size {0}."
                   .format(self.hidden_size))
