@@ -21,7 +21,7 @@ python dataset.py
 - xxx
 - Run python file
 ```
-python stacked_blstm.py
+python stacked_BLSTM/stacked_blstm.py
 ```
 
 ## 3. LSTM Models
@@ -30,11 +30,11 @@ python stacked_blstm.py
 - Requirements: Python 3.7.4, TensorFlow 2.2.0, matplotlib, pandas, numpy, sklearn
 - Option 1: run python file
 ```
-python stacked_blstm.py
+python stacked_BLSTM/stacked_blstm.py
 ```
 - Option 2: run on jupyter notebook
 ```
-jupyter notebook stacked_blstm.ipynb
+jupyter notebook stacked_BLSTM/stacked_blstm.ipynb
 ```
 
 ### 3.2 LSTM-AT & LSTM-SAT
