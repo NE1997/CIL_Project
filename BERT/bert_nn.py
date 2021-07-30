@@ -364,6 +364,7 @@ with open("twitter-datasets/train_small_all.csv", "w", encoding='UTF8') as f:
       writer.writerow(data)
 
 f.close()
+'''
 
 test_data = []
 
@@ -387,7 +388,7 @@ with open("twitter-datasets/test_data.csv", "w", encoding='UTF8') as f:
       writer.writerow(data)
 
 f.close()
-'''
+
 
 data = pd.DataFrame()        
 temp_df = pd.read_csv("twitter-datasets/train_full_all_shuffled.csv", encoding='utf-8').reset_index(drop=True)
