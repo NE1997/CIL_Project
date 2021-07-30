@@ -16,26 +16,41 @@ python dataset.py
 ```
 
 ## 2. Baseline ML Models
-- Requirements: 
+- Requirements: numpy, gensim, sklearn
 
 ### 2.1 File structure
 ```
 .
-├── config.yml
-├── drafts
-|   ├── begin-with-the-crazy-ideas.textile
-|   └── on-simplicity-in-technology.markdown
-├── includes
+├── GloVe_random_forest.py
+├── GloVe_svm.py
+├── twitter-datasets
+|   ├── test_data.txt
+|   ├── train_neg.txt
+|   ├── train_neg_full.txt
+|   ├── train_pos.txt
+|   ├── train_pos_full.txt
+|   └── glove
+|       ├── glove.twitter.27B.25d.txt
+|       ├── glove.twitter.27B.50d.txt
+|       ├── glove.twitter.27B.100d.txt
+|       ├── glove.twitter.27B.200d.txt
 ```
 
-### 2.2 How to run
-- Run python file
+### 2.2 Download GloVe pre-trained vectors for twitter
+- Please download 25d, 50d, 100d, 200d vectors using the following link: https://nlp.stanford.edu/data/glove.twitter.27B.zip; source website: https://nlp.stanford.edu/projects/glove/.
+- After downloading, unzip the file and put all .txt files in the a folder named "glove". Place the "glove" folder according to the file structure.
+- If it is not the first time you have run the code for the corresponding dimension (i.e., you have obtained "glove.twitter.27B.--d.word2vec" where -- is the dimensionality), you can comment line 42 in both python files to speed up the process.
+
+### 2.3 How to run
+- Choose the GloVe dimension in line 38 (acceptable values: 25, 50, 100, 200; default: 200)
+- Choose the data size in line 59 (acceptable values: "partial", "full"; default: "partial")
+- Run python file according to the classifier you want to choose:
 ```
-python stacked_BLSTM/stacked_blstm.py
+python GloVe_random_forest.py
 ```
 or
 ```
-python stacked_BLSTM/stacked_blstm.py
+python GloVe_svm.py
 ```
 - Note: These codes include their own data shuffling and splitting, depending on whether partial data or full data is used for training. Make sure to organize files in an identical manner as shown in the file structure in order for programs to run properly!
 
