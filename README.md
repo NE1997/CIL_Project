@@ -17,12 +17,27 @@ python dataset.py
 
 ## 2. Baseline ML Models
 - Requirements: 
-- File structure:
-- xxx
+
+### 2.1 File structure
+```
+.
+├── config.yml
+├── drafts
+|   ├── begin-with-the-crazy-ideas.textile
+|   └── on-simplicity-in-technology.markdown
+├── includes
+```
+
+### 2.2 How to run
 - Run python file
 ```
-python stacked_BLSTM/stacked_blstm.py
+python stacked_blstm.py
 ```
+or
+```
+python stacked_blstm.py
+```
+- Note: These codes include their own data shuffling and splitting, depending on whether partial data or full data is used for training. Make sure to organize files in an identical manner as shown in the file structure in order for programs to run properly!
 
 ## 3. LSTM Models
 
@@ -30,11 +45,11 @@ python stacked_BLSTM/stacked_blstm.py
 - Requirements: Python 3.7.4, TensorFlow 2.2.0, matplotlib, pandas, numpy, sklearn
 - Option 1: run python file
 ```
-python stacked_BLSTM/stacked_blstm.py
+python stacked_blstm.py
 ```
 - Option 2: run on jupyter notebook
 ```
-jupyter notebook stacked_BLSTM/stacked_blstm.ipynb
+jupyter notebook stacked_blstm.ipynb
 ```
 
 ### 3.2 LSTM-AT & LSTM-SAT
