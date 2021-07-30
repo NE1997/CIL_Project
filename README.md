@@ -40,7 +40,7 @@ module load gcc/6.3.0 python_gpu/3.7.4
 - Download tweet opinion words from [Link](https://www.kaggle.com/nltkdata/opinion-lexicon), put positive-words.txt and negative-words.txt under ```./opinion_lexicon```
 - Generate sentiment lexicon
 ```
-python LSTM-SAT/sentiment_score.py
+python LSTM-SAT/setiment_score.py
 ```
 - Data preprocessing, embedding; sentiment vector generation; data and sentiment vector batching
 ```
