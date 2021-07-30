@@ -16,7 +16,7 @@ python dataset.py
 ```
 
 ## 2. Baseline ML Models
-- Requirements: numpy, gensim, sklearn
+- Requirements: Python 3.8.5, numpy, gensim, sklearn
 
 ### 2.1 File structure
 ```
@@ -33,7 +33,7 @@ python dataset.py
 |       ├── glove.twitter.27B.25d.txt
 |       ├── glove.twitter.27B.50d.txt
 |       ├── glove.twitter.27B.100d.txt
-|       ├── glove.twitter.27B.200d.txt
+|       └── glove.twitter.27B.200d.txt
 ```
 
 ### 2.2 Download GloVe pre-trained vectors for twitter
@@ -44,6 +44,7 @@ python dataset.py
 ### 2.3 How to run
 - Choose the GloVe dimension in line 38 (acceptable values: 25, 50, 100, 200; default: 200)
 - Choose the data size in line 59 (acceptable values: "partial", "full"; default: "partial")
+- For svm only: choose the kernel function by commenting line 98 and 99 to utilize the linear kernel, or commenting line 101 and 102 to utilize the rbf kernel
 - Run python file according to the classifier you want to choose:
 ```
 python GloVe_random_forest.py
