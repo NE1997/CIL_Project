@@ -42,9 +42,9 @@ python dataset.py
 - If it is not the first time you have run the code for the corresponding dimension (i.e., you have obtained "glove.twitter.27B.--d.word2vec" where -- is the dimensionality), you can comment line 42 in both python files to speed up the process.
 
 ### 2.3 How to run
-- Choose the GloVe dimension in line 38 (acceptable values: 25, 50, 100, 200; default: 200)
-- Choose the data size in line 59 (acceptable values: "partial", "full"; default: "partial")
-- For svm only: choose the kernel function by commenting line 98 and 99 to utilize the linear kernel, or commenting line 101 and 102 to utilize the rbf kernel
+- Choose the GloVe dimension in line 47 (acceptable values: 25, 50, 100, 200; default: 200)
+- Choose the data size in line 68 (acceptable values: "partial", "full"; default: "partial")
+- For svm only: choose the kernel function by commenting line 107 and 108 to utilize the linear kernel, or commenting line 110 and 111 to utilize the rbf kernel
 - Run python file according to the classifier you want to choose:
 ```
 python GloVe_random_forest.py
@@ -127,3 +127,4 @@ We would like to thank the following Github repos and tutorials: <br/>
 - [bert fine-tuning 1](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
 - [bert fine-tuning 2](https://skimai.com/fine-tuning-bert-for-sentiment-analysis/)
 - [Text classification with an RNN](https://www.tensorflow.org/text/tutorials/text_classification_rnn)
+- [Getting started with NLP: Word Embeddings, GloVe and Text classification](https://edumunozsala.github.io/BlogEms/jupyter/nlp/classification/embeddings/python/2020/08/15/Intro_NLP_WordEmbeddings_Classification.html)
