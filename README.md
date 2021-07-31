@@ -4,7 +4,7 @@ Project for Computational Intelligence Lab 2021 Spring @ ETH Zurich [[Report Lin
 ## Authors
 Ying Jiao, Yuyan Zhao, Shuting Li, Nils Ebeling
 ## Project Description
-
+Neural network ensemble for sentiment classification (positive/1 or negative/0) of tweets. Individual models are based on BERT and bidirectional RNNs using LSTM cells, augmented with sentiment information.
 
 
 ## 1. Data shuffle and split
