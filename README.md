@@ -1,5 +1,5 @@
 # Tweet Sentiment Classification
-Project for Computational Intelligence Lab 2021 Spring @ ETH Zurich [[Report Link]](./document/CIL2021-SNYY.pdf) <br/>
+Project for Computational Intelligence Lab 2021 Spring @ ETH Zurich [[Report Link]](./document/CIL2021_SNYY.pdf) <br/>
 
 ## Authors
 Ying Jiao, Yuyan Zhao, Shuting Li, Nils Ebeling
