@@ -8,7 +8,7 @@ Function "vectorizer()" adapted from:
 *    Title: Getting started with NLP: Word Embeddings, GloVe and Text classification
 *    Author: Eduardo Muñoz Sala
 *    Section: Applying the word embedding to a text classification task
-*    Date: Aug 15, 2020
+*    Accessed date: Jun 21, 2021
 *    Availability: https://edumunozsala.github.io/BlogEms/jupyter/nlp/classification/embeddings/python/2020/08/15/Intro_NLP_WordEmbeddings_Classification.html
 *
 """
